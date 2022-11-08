@@ -42,10 +42,6 @@ const MyReviews = () => {
           </tbody>
         </table>
       </div>
-
-      {/* {myReview.map((review) => (
-        <li key={review._id}>{review.userName}</li>
-      ))} */}
     </div>
   );
 };
