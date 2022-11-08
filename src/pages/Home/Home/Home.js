@@ -1,6 +1,6 @@
 import React from "react";
 import NabBanner from "../../Shared/NabBanner/NabBanner";
-import ServicesItems from "../ServecsItems/ServicesItems";
+import ServicesItems from "../ServicesItems/ServicesItems";
 
 const Home = () => {
   return (
