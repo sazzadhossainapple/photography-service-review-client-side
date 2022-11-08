@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 import { AiOutlineDoubleRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/UserContext";
+import AllUsersReviews from "../AllUserReviews/AllUsersReviews";
+import TileLine from "../../../asserts/images/titleLine.webp";
 
 const ReviewPage = ({ serviceDetails }) => {
   const { user } = useContext(AuthContext);
@@ -54,15 +56,21 @@ const ReviewPage = ({ serviceDetails }) => {
 
   return (
     <div>
-      <div className="mb-3">
-        <h1 className="text-2xl">All Users Review</h1>
+      <div className="flex text-center justify-center flex-col">
+        <div>
+          <img className="inline-block my-2" src={TileLine} alt="" />
+
+          <h1 className="text-2xl ">All Users Review</h1>
+        </div>
       </div>
+
       <div className="my-10">
         <div>
           {reviewUsers.map((reviewUser) => (
-            <li key={reviewUser._id}>
-              {reviewUser.email} {reviewUser.reviewMassage}
-            </li>
+            <AllUsersReviews
+              key={reviewUser._id}
+              reviewUser={reviewUser}
+            ></AllUsersReviews>
           ))}
         </div>
       </div>

@@ -18,7 +18,7 @@ const ServicesItemsCard = ({ service }) => {
       <div className="text-center  px-5 bg-[#1e2427]  text-slate-200 rounded-b-lg">
         <div className="-mt-10">
           <div className="flex justify-center gap-6 my-4 ">
-            <span className="btn rounded-full px-6">Price: {price}</span>
+            <span className="btn rounded-full px-6">Price: ${price}</span>
           </div>
           <h1 className="text-xl font-medium mt-6">{name}</h1>
           <p className="mb-10 mt-2">
