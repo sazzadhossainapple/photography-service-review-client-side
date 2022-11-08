@@ -25,8 +25,8 @@ const Services = () => {
           <img className="inline-block mt-1" src={TitleLine} alt="" />
         </div>
       </div>
-      <div className="lg:px-20 md:px-12 sm:px-8 px-6 lg:py-20 md:py-16 sm:py-12 py-8">
-        <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 grid-cols-1 gap-5 ">
+      <div className="lg:px-20 md:px-12 sm:px-8 px-6 lg:py-28 md:py-16 sm:py-12 py-8">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-5 ">
           {services.map((service) => (
             <ServicesItemsCard key={service._id} service={service} />
           ))}

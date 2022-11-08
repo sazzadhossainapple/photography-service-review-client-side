@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../asserts/images/logo.png";
 import { AiOutlineDoubleRight } from "react-icons/ai";
 import "./Navbar.css";
+import { AuthContext } from "../../../context/UserContext";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="navbar bg-base-100 shadow-lg py-5 lg:px-20 md:px-12 sm:px-8 px-6">
       <div className="navbar-start">
@@ -124,6 +126,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end hidden lg:flex lg:w-1/3">
+        <p>{user?.displayName}</p>
         <Link
           to="/login"
           className="border  px-8 text-base py-3 font-medium border-[#ab1818] rounded-full bg-[#ab1818] hover:bg-[#9c1616] text-white"
