@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { AiOutlineDoubleRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/UserContext";
@@ -6,8 +7,19 @@ import { AuthContext } from "../../../context/UserContext";
 const ReviewPage = ({ serviceDetails }) => {
   const { user } = useContext(AuthContext);
   const { _id, name } = serviceDetails.data;
-  console.log(_id);
 
+  const [reviewUsers, setReviewUsers] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/allUserReview?serviceId=${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setReviewUsers(data.data);
+      })
+      .catch((err) => console.error(err));
+  }, [_id]);
+
+  // post handle review user
   const handleUserSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,7 +35,7 @@ const ReviewPage = ({ serviceDetails }) => {
     };
     console.log(userReviewInfo);
 
-    fetch("", {
+    fetch("http://localhost:5000/userReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -32,7 +44,10 @@ const ReviewPage = ({ serviceDetails }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.status) {
+          toast.success("Your review added successfully.");
+          form.reset();
+        }
       })
       .catch((error) => console.error(error));
   };
@@ -43,7 +58,13 @@ const ReviewPage = ({ serviceDetails }) => {
         <h1 className="text-2xl">All Users Review</h1>
       </div>
       <div className="my-10">
-        <div>img</div>
+        <div>
+          {reviewUsers.map((reviewUser) => (
+            <li key={reviewUser._id}>
+              {reviewUser.email} {reviewUser.reviewMassage}
+            </li>
+          ))}
+        </div>
       </div>
 
       {user?.email ? (
