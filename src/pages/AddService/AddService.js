@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../context/UserContext";
 import logo from "../../asserts/images/logo.png";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddService = () => {
   const { logOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleAddServices = (e) => {
     e.preventDefault();
@@ -36,6 +38,7 @@ const AddService = () => {
           toast.success("Your service added successfully.");
           console.log(data);
           form.reset();
+          navigate("/");
         }
       })
       .catch((err) => console.error(err));
