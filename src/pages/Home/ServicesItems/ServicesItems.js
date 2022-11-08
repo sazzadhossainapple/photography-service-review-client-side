@@ -3,7 +3,7 @@ import { AiOutlineDoubleRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import TitleLine from "../../../asserts/images/titleLine.webp";
 import "../../Shared/Navbar/Navbar.css";
-import ServicesItemsCard from "./ServicesItemsCard";
+import ServicesItemsCard from "../../Shared/ServicesItemsCard/ServicesItemsCard";
 
 const ServicesItems = () => {
   const [services, setServices] = useState([]);

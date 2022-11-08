@@ -3,10 +3,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ServicesItemsCard = ({ service }) => {
-  const { name, description, image, price } = service;
+  const { _id, name, description, image, price } = service;
 
   return (
-    <div className="border-2  flex flex-col justify-center hover:border-[#ab1818] rounded-lg bg-slate-100">
+    <div className="border-2  flex flex-col justify-center hover:border-[#ab1818] rounded-lg  bg-slate-100">
       <div className="flex justify-center  px-5">
         <img
           className="rounded-full mt-10 mb-16 w-80 h-80"
@@ -28,7 +28,7 @@ const ServicesItemsCard = ({ service }) => {
           </p>
         </div>
         <Link
-          to=""
+          to={`/service/${_id}`}
           className="border mb-8 w-full btn  text-base font-medium border-[#ab1818] hover:border-[#ab1818] rounded-full bg-transparent hover:bg-[#9c1616] text-white"
         >
           view details
