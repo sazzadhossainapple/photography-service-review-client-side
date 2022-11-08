@@ -8,7 +8,7 @@ import Login from "../../pages/Login/Login";
 import MyReviews from "../../pages/MyReviews/MyReviews";
 import Register from "../../pages/Register/Register";
 import Services from "../../pages/Services/Services";
-import ServicesDeatils from "../../pages/Shared/ServicesDetails/ServicesDeatils";
+import ServicesDetails from "../../pages/Shared/ServicesDetails/ServicesDetails";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 export const router = createBrowserRouter([
@@ -40,7 +40,12 @@ export const router = createBrowserRouter([
           </PrivateRoutes>
         ),
       },
-      { path: "/service/:id", element: <ServicesDeatils /> },
+      {
+        path: "/service/:id",
+        element: <ServicesDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
+      },
     ],
   },
 ]);
