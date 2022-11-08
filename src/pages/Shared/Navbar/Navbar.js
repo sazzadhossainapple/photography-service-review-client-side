@@ -6,7 +6,14 @@ import "./Navbar.css";
 import { AuthContext } from "../../../context/UserContext";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
+
+  const userSignOut = () => {
+    logOutUser()
+      .then(() => {})
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="navbar bg-base-100 shadow-lg py-5 lg:px-20 md:px-12 sm:px-8 px-6">
       <div className="navbar-start">
@@ -89,30 +96,6 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/myReview"
-              className={({ isActive }) =>
-                isActive
-                  ? `text-[#ab1818] font-medium underline underline-offset-8 mr-3 hover:text-[#ab1818] bg-transparent`
-                  : `hover:text-[#ab1818] font-medium hover:underline hover:underline-offset-8 mr-3 bg-transparent`
-              }
-            >
-              My Reviews
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/addService"
-              className={({ isActive }) =>
-                isActive
-                  ? `text-[#ab1818] font-medium underline underline-offset-8 mr-3 hover:text-[#ab1818] bg-transparent`
-                  : `hover:text-[#ab1818] font-medium hover:underline hover:underline-offset-8  mr-3 bg-transparent`
-              }
-            >
-              Add Service
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/blog"
               className={({ isActive }) =>
                 isActive
@@ -123,19 +106,67 @@ const Navbar = () => {
               Blog
             </NavLink>
           </li>
+          {user?.email && (
+            <>
+              <li>
+                <NavLink
+                  to="/myReview"
+                  className={({ isActive }) =>
+                    isActive
+                      ? `text-[#ab1818] font-medium underline underline-offset-8 mr-3 hover:text-[#ab1818] bg-transparent`
+                      : `hover:text-[#ab1818] font-medium hover:underline hover:underline-offset-8 mr-3 bg-transparent`
+                  }
+                >
+                  My Reviews
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/addService"
+                  className={({ isActive }) =>
+                    isActive
+                      ? `text-[#ab1818] font-medium underline underline-offset-8 mr-3 hover:text-[#ab1818] bg-transparent`
+                      : `hover:text-[#ab1818] font-medium hover:underline hover:underline-offset-8  mr-3 bg-transparent`
+                  }
+                >
+                  Add Service
+                </NavLink>
+              </li>
+              <li>
+                <p className="bg-transparent text-[#ab1818]">
+                  {user?.displayName}
+                </p>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <div className="navbar-end hidden lg:flex lg:w-1/3">
-        <p>{user?.displayName}</p>
-        <Link
-          to="/login"
-          className="border  px-8 text-base py-3 font-medium border-[#ab1818] rounded-full bg-[#ab1818] hover:bg-[#9c1616] text-white"
-        >
-          <span className="flex items-center gap-2">
-            <span> Login</span> |
-            <AiOutlineDoubleRight />
-          </span>
-        </Link>
+        {user?.email ? (
+          <>
+            <button
+              onClick={userSignOut}
+              className="border  px-8 text-base py-3 font-medium border-[#ab1818] rounded-full bg-[#ab1818] hover:bg-[#9c1616] text-white"
+            >
+              <span className="flex items-center gap-2">
+                <span> Logout</span> |
+                <AiOutlineDoubleRight />
+              </span>
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              to="/login"
+              className="border  px-8 text-base py-3 font-medium border-[#ab1818] rounded-full bg-[#ab1818] hover:bg-[#9c1616] text-white"
+            >
+              <span className="flex items-center gap-2">
+                <span> Login</span> |
+                <AiOutlineDoubleRight />
+              </span>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

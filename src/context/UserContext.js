@@ -13,9 +13,7 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const UserContext = ({ children }) => {
-  const [user, setUser] = useState({
-    displayName: "sazzad",
-  });
+  const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
 
   //create a new users
