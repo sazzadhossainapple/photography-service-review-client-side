@@ -11,15 +11,12 @@ const MyReviews = () => {
     fetch(`http://localhost:5000/myReview?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.data);
         setMyReview(data.data);
       });
   }, [user?.email]);
 
   //delete by review
   const handleReviewDelete = (id) => {
-    // toast.success("are you sure you want to the delete");
-    // console.log("delete");
     fetch(`http://localhost:5000/myReview/${id}`, {
       method: "DELETE",
     })
@@ -43,28 +40,15 @@ const MyReviews = () => {
         </>
       ) : (
         <>
-          <div className="overflow-x-auto">
-            <table className="table w-full">
-              <thead>
-                <tr className="bg-[#ab1818]">
-                  <th></th>
-                  <th>Service Name</th>
-                  <th>Email</th>
-                  <th>Review</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {myReview.map((review, index) => (
-                  <MyReviewsDetails
-                    key={review._id}
-                    review={review}
-                    index={index + 1}
-                    handleReviewDelete={handleReviewDelete}
-                  ></MyReviewsDetails>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-6">
+            {myReview.map((review, index) => (
+              <MyReviewsDetails
+                key={review._id}
+                review={review}
+                index={index + 1}
+                handleReviewDelete={handleReviewDelete}
+              ></MyReviewsDetails>
+            ))}
           </div>
         </>
       )}
