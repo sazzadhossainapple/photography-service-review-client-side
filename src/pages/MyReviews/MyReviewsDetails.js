@@ -29,7 +29,7 @@ const MyReviewsDetails = ({ review, index, handleReviewDelete }) => {
 
           <div className="flex items-center  gap-3">
             <button onClick={() => handleReviewDelete(_id)}>
-              <AiFillDelete className="text-2xl ml-4 "></AiFillDelete>
+              <AiFillDelete className="text-2xl ml-5 "></AiFillDelete>
             </button>
             <Link to={`/updatedReview/${_id}`}>
               <AiFillEdit className="text-2xl  "></AiFillEdit>

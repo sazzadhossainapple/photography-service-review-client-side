@@ -20,12 +20,25 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        form.reset();
-        navigate(from, { replace: true });
 
         const currentsUser = {
           email: user.email,
         };
+
+        // get jwt token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentsUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("flash-point-token", data.token);
+            form.reset();
+            navigate(from, { replace: true });
+          });
       })
       .catch((err) => console.error(err));
   };

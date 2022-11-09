@@ -4,16 +4,26 @@ import { AuthContext } from "../../context/UserContext";
 import MyReviewsDetails from "./MyReviewsDetails";
 
 const MyReviews = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
   const [myReview, setMyReview] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myReview?email=${user?.email}`)
-      .then((res) => res.json())
+    fetch(`http://localhost:5000/myReview?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("flash-point-token")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          return logOutUser();
+        }
+
+        return res.json();
+      })
       .then((data) => {
         setMyReview(data.data);
       });
-  }, [user?.email]);
+  }, [user?.email, logOutUser]);
 
   //delete by review
   const handleReviewDelete = (id) => {

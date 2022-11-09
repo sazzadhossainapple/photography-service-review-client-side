@@ -40,7 +40,7 @@ const UserContext = ({ children }) => {
   // user logout
   const logOutUser = () => {
     setLoading(true);
-    localStorage.removeItem("users");
+    localStorage.removeItem("flash-point-token");
     return signOut(auth);
   };
 
