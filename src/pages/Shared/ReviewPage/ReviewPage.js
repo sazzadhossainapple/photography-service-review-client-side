@@ -13,7 +13,9 @@ const ReviewPage = ({ serviceDetails }) => {
   const [reviewUsers, setReviewUsers] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allUserReview?serviceId=${_id}`)
+    fetch(
+      `https://flash-photography-point-server.vercel.app/allUserReview?serviceId=${_id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setReviewUsers(data.data);
@@ -37,7 +39,7 @@ const ReviewPage = ({ serviceDetails }) => {
     };
     console.log(userReviewInfo);
 
-    fetch("http://localhost:5000/userReview", {
+    fetch("https://flash-photography-point-server.vercel.app/userReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",

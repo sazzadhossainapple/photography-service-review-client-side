@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { AiOutlineDoubleRight } from "react-icons/ai";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/UserContext";
@@ -26,7 +26,7 @@ const UpdatedReview = () => {
       email: email,
     };
 
-    fetch(`http://localhost:5000/myReview/${_id}`, {
+    fetch(`https://flash-photography-point-server.vercel.app/myReview/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

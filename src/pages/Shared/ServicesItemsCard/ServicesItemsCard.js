@@ -1,4 +1,5 @@
 import React from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 import { Link } from "react-router-dom";
 
@@ -8,11 +9,15 @@ const ServicesItemsCard = ({ service }) => {
   return (
     <div className="border-2  flex flex-col justify-center hover:border-[#ab1818] rounded-lg  bg-slate-100">
       <div className="flex justify-center  px-5">
-        <img
-          className="rounded-full mt-10 mb-16 w-80 h-80"
-          src={image}
-          alt=""
-        />
+        <PhotoProvider>
+          <PhotoView src={image}>
+            <img
+              className="rounded-full mt-10 mb-16 w-80 h-80"
+              src={image}
+              alt=""
+            />
+          </PhotoView>
+        </PhotoProvider>
       </div>
 
       <div className="text-center  px-5 bg-[#1e2427]  text-slate-200 rounded-b-lg">

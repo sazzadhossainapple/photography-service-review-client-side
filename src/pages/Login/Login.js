@@ -26,7 +26,7 @@ const Login = () => {
         };
 
         // get jwt token
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://flash-photography-point-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",

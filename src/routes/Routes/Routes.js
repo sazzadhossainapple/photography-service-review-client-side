@@ -45,7 +45,9 @@ export const router = createBrowserRouter([
         path: "/service/:id",
         element: <ServicesDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://flash-photography-point-server.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/updatedReview/:id",
@@ -55,7 +57,9 @@ export const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/myReview/${params.id}`),
+          fetch(
+            `https://flash-photography-point-server.vercel.app/myReview/${params.id}`
+          ),
       },
     ],
   },

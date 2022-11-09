@@ -8,11 +8,14 @@ const MyReviews = () => {
   const [myReview, setMyReview] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myReview?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("flash-point-token")}`,
-      },
-    })
+    fetch(
+      `https://flash-photography-point-server.vercel.app/myReview?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("flash-point-token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           return logOutUser();
@@ -27,7 +30,7 @@ const MyReviews = () => {
 
   //delete by review
   const handleReviewDelete = (id) => {
-    fetch(`http://localhost:5000/myReview/${id}`, {
+    fetch(`https://flash-photography-point-server.vercel.app/myReview/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

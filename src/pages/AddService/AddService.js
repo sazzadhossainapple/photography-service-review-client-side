@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../context/UserContext";
+import React from "react";
 import logo from "../../asserts/images/logo.png";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const AddService = () => {
-  const { logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleAddServices = (e) => {
@@ -25,7 +23,7 @@ const AddService = () => {
     };
     console.log(addServices);
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://flash-photography-point-server.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
