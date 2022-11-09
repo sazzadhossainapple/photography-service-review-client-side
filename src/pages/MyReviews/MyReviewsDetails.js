@@ -17,7 +17,10 @@ const MyReviewsDetails = ({ review, index, handleReviewDelete }) => {
         >
           delete
         </button>
-        <Link className="btn text-slate-200 bg-[#ab1818] hover:bg-[#9c1616] hover:border-[#9c1616] border-[#ab1818] px-7 font-medium">
+        <Link
+          to={`/updatedReview/${_id}`}
+          className="btn text-slate-200 bg-[#ab1818] hover:bg-[#9c1616] hover:border-[#9c1616] border-[#ab1818] px-7 font-medium"
+        >
           Edit
         </Link>
       </td>
