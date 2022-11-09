@@ -23,7 +23,13 @@ const ServicesItems = () => {
     <section className="">
       <div className="lg:px-20 md:px-12 sm:px-8 px-6 py-20">
         <div className="flex flex-col w-full border-opacity-50">
-          <div className="divider text-2xl font-medium">
+          <span className="lg:block hidden">
+            <div className="divider  text-2xl font-medium">
+              Finding Photography Services
+            </div>
+          </span>
+
+          <div className="text-xl font-medium lg:hidden flex justify-center">
             Finding Photography Services
           </div>
         </div>
