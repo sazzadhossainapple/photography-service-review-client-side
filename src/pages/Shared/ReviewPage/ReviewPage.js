@@ -102,7 +102,7 @@ const ReviewPage = ({ serviceDetails }) => {
         </>
       ) : (
         <>
-          <p className="text-xl">
+          <p className="text-xl text-center">
             Please{" "}
             <Link
               className="font-medium text-[#ab1818] hover:underline"

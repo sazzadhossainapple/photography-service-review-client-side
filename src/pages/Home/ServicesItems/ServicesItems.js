@@ -7,17 +7,14 @@ import ServicesItemsCard from "../../Shared/ServicesItemsCard/ServicesItemsCard"
 
 const ServicesItems = () => {
   const [services, setServices] = useState([]);
-  const [size, setSize] = useState(3);
 
   useEffect(() => {
-    fetch(
-      `https://flash-photography-point-server.vercel.app/services?size=${size}`
-    )
+    fetch(`https://flash-photography-point-server.vercel.app/homeServices`)
       .then((res) => res.json())
       .then((data) => {
         setServices(data.data);
       });
-  }, [size]);
+  }, []);
 
   return (
     <section className="">

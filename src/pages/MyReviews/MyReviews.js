@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/UserContext";
+import Spinner from "../Shared/Spinner/Spinner";
 import MyReviewsDetails from "./MyReviewsDetails";
 
 const MyReviews = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const [myReview, setMyReview] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -25,6 +27,7 @@ const MyReviews = () => {
       })
       .then((data) => {
         setMyReview(data.data);
+        setLoading(false);
       });
   }, [user?.email, logOutUser]);
 
@@ -45,24 +48,32 @@ const MyReviews = () => {
 
   return (
     <div className="min-h-screen py-12 lg:px-20 md:px-12 sm:px-8 px-6">
-      {myReview.length === 0 ? (
+      {loading ? (
         <>
-          <h1 className="text-xl flex justify-center items-center min-h-screen ">
-            No reviews were added
-          </h1>
+          <Spinner></Spinner>
         </>
       ) : (
         <>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-6">
-            {myReview.map((review, index) => (
-              <MyReviewsDetails
-                key={review._id}
-                review={review}
-                index={index + 1}
-                handleReviewDelete={handleReviewDelete}
-              ></MyReviewsDetails>
-            ))}
-          </div>
+          {myReview.length === 0 ? (
+            <>
+              <h1 className="text-xl flex justify-center items-center min-h-screen ">
+                No reviews were added
+              </h1>
+            </>
+          ) : (
+            <>
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-6">
+                {myReview.map((review, index) => (
+                  <MyReviewsDetails
+                    key={review._id}
+                    review={review}
+                    index={index + 1}
+                    handleReviewDelete={handleReviewDelete}
+                  ></MyReviewsDetails>
+                ))}
+              </div>
+            </>
+          )}
         </>
       )}
     </div>

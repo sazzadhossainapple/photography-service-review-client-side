@@ -3,12 +3,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/UserContext";
 import logo from "../../asserts/images/logo.png";
 import { AiOutlineDoubleRight } from "react-icons/ai";
+import { FaGoogle } from "react-icons/fa";
+import { setAuthToken } from "../../api/Auth";
 
 const Login = () => {
-  const { logInUser } = useContext(AuthContext);
+  const { logInUser, userSignInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -39,6 +42,18 @@ const Login = () => {
             form.reset();
             navigate(from, { replace: true });
           });
+      })
+      .catch((err) => console.error(err));
+  };
+
+  // sing in google
+  const signInWithGoogle = () => {
+    userSignInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setAuthToken(user);
+        navigate(from, { replace: true });
       })
       .catch((err) => console.error(err));
   };
@@ -109,7 +124,15 @@ const Login = () => {
                 Register
               </Link>
             </p>
-            <button className=" mt-2">Google</button>
+            <span className="flex justify-center">
+              <button
+                onClick={signInWithGoogle}
+                className=" mt-2 flex justify-center items-center gap-1"
+              >
+                <FaGoogle className="text-2xl" />
+                <span className="text-[#ab1818]">Google</span>
+              </button>
+            </span>
           </div>
         </div>
       </div>
