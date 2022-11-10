@@ -45,9 +45,7 @@ const ReviewPage = ({ serviceDetails }) => {
       },
       body: JSON.stringify(userReviewInfo),
     })
-      .then((res) => {
-        res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
         if (data.status) {
           toast.success("Your review added successfully.");
