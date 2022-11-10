@@ -14,7 +14,6 @@ const Services = () => {
     fetch("https://flash-photography-point-server.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.data);
         setServices(data.data);
         setLoading(false);
       });

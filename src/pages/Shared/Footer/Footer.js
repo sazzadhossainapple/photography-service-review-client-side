@@ -31,7 +31,10 @@ const Footer = () => {
           </div>
         </div>
         <hr className="border-1 text-white w-40 mb-2" />
-        <p>Copyright © 2022 - All right reserved</p>
+        <p>
+          Copyright © 2022 - All right reserved by{" "}
+          <span className="font-text1 ">Flash Photography Point</span>{" "}
+        </p>
       </div>
     </footer>
   );

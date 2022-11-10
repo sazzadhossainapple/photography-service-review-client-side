@@ -6,6 +6,7 @@ import { AiOutlineDoubleRight } from "react-icons/ai";
 import { FaGoogle } from "react-icons/fa";
 import { setAuthToken } from "../../api/Auth";
 import useTitle from "../../hooks/useTitle";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { logInUser, userSignInWithGoogle } = useContext(AuthContext);
@@ -42,10 +43,14 @@ const Login = () => {
           .then((data) => {
             localStorage.setItem("flash-point-token", data.token);
             form.reset();
+            toast.success("User Login Successfully.");
             navigate(from, { replace: true });
           });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        toast.error(err.message);
+      });
   };
 
   // sing in google

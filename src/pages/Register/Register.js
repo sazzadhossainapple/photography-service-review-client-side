@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AiOutlineDoubleRight } from "react-icons/ai";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -29,11 +30,32 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        userProfile(name, photoURL);
-        form.reset();
-        navigate(from, { replace: true });
+
+        const currentsUser = {
+          email: user.email,
+        };
+
+        // get jwt token
+        fetch("https://flash-photography-point-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentsUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("flash-point-token", data.token);
+            userProfile(name, photoURL);
+            form.reset();
+            toast.success("User Create Successfully.");
+            navigate(from, { replace: true });
+          });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        toast.error(err.message);
+      });
   };
 
   // update profile

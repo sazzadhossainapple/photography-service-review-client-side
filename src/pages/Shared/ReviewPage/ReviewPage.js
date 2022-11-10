@@ -20,7 +20,7 @@ const ReviewPage = ({ serviceDetails }) => {
         setReviewUsers(data.data);
       })
       .catch((err) => console.error(err));
-  }, [_id]);
+  }, [_id, reviewUsers]);
 
   // post handle review user
   const handleUserSubmit = (e) => {
@@ -36,7 +36,6 @@ const ReviewPage = ({ serviceDetails }) => {
       email: user?.email,
       userImage: user?.photoURL,
     };
-    console.log(userReviewInfo);
 
     fetch("https://flash-photography-point-server.vercel.app/userReview", {
       method: "POST",
@@ -47,7 +46,7 @@ const ReviewPage = ({ serviceDetails }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.status) {
+        if (data.data.acknowledged) {
           toast.success("Your review added successfully.");
           form.reset();
         }
