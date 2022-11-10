@@ -29,7 +29,6 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
 
         const currentsUser = {
           email: user.email,
@@ -70,7 +69,6 @@ const Register = () => {
     userSignInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
         setAuthToken(user);
         navigate(from, { replace: true });
       })

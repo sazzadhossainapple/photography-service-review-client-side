@@ -7,8 +7,11 @@ const ServicesItemsCard = ({ service }) => {
   const { _id, name, description, image, price } = service;
 
   return (
-    <div className="border-2  flex flex-col justify-center hover:border-[#ab1818] rounded-lg  bg-slate-100">
-      <div className="flex justify-center  px-5">
+    <div
+      className="border-2 h-full flex flex-col justify-center hover:border-[#ab1818] rounded-lg 
+      bg-slate-100 "
+    >
+      <div className="flex justify-center px-5">
         <PhotoProvider>
           <PhotoView src={image}>
             <img
@@ -20,7 +23,7 @@ const ServicesItemsCard = ({ service }) => {
         </PhotoProvider>
       </div>
 
-      <div className="text-center  px-5 bg-[#1e2427]  text-slate-200 rounded-b-lg">
+      <div className="text-center h-full px-5 bg-[#1e2427]  text-slate-200 rounded-b-lg">
         <div className="-mt-10">
           <div className="flex justify-center gap-6 my-4 ">
             <span className="btn rounded-full px-6">Price: ${price}</span>
@@ -32,9 +35,10 @@ const ServicesItemsCard = ({ service }) => {
               : description}
           </p>
         </div>
+
         <Link
           to={`/service/${_id}`}
-          className="border mb-8 w-full btn  text-base font-medium border-[#ab1818] hover:border-[#ab1818] rounded-full bg-transparent hover:bg-[#9c1616] text-white"
+          className="border mb-8   w-full btn  text-base font-medium border-[#ab1818] hover:border-[#ab1818] rounded-full bg-transparent hover:bg-[#9c1616] text-white"
         >
           view details
         </Link>
