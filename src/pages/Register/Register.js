@@ -5,12 +5,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { setAuthToken } from "../../api/Auth";
 import logo from "../../asserts/images/logo.png";
 import { AuthContext } from "../../context/UserContext";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
   const { createUser, userUpadetedProfile, userSignInWithGoogle } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  useTitle("Register");
+
   const from = location.state?.from?.pathname || "/";
   const handleSubmit = (e) => {
     e.preventDefault();

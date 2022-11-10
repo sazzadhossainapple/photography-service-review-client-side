@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/UserContext";
+import useTitle from "../../hooks/useTitle";
 import Spinner from "../Shared/Spinner/Spinner";
 import MyReviewsDetails from "./MyReviewsDetails";
 
@@ -8,6 +9,7 @@ const MyReviews = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const [myReview, setMyReview] = useState([]);
   const [loading, setLoading] = useState(true);
+  useTitle("My Reviews");
 
   useEffect(() => {
     fetch(

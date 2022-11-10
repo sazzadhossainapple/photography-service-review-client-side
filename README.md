@@ -2,29 +2,25 @@
 
 Live Website Link [Flash Photography Point](https://flash-photography-point.web.app).
 
-## Available Scripts
+## Live Website Link
 
-In the project directory, you can run:
+Live Link: [https://flash-photography-point.web.app/](https://flash-photography-point.web.app/)
 
-### `npm start`
+### Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- This website uses modern javascript react js. React router dom has been used and firebase authentication and server side NodeJS and data store mongodb. Through which the navbar can be navigated.
+- What services a photographer provides and user reviews will be provided on that service. But if the user wants to give a review, he must first login.
+- Email verification will be done from the server side while logging in to this website uses. User is valid or not. JSON web token(JWT) is used on the server side.
+- How many reviews a current user gives and can see on any service? And those who review the service can delete and update it.
+- New services can be added to the Flash Photography point.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Use technologies
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React js\
+- Node JS\
+- Express JS\
+- MongoDB\
+- Tailwind css framework\
+- Firebase Authentication\
+- React Icons\
+- React Hot Toast\

@@ -4,12 +4,14 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/UserContext";
 import TileLine from "../../../asserts/images/titleLine.webp";
 import toast from "react-hot-toast";
+import useTitle from "../../../hooks/useTitle";
 
 const UpdatedReview = () => {
   const { user } = useContext(AuthContext);
   const reviewUpdated = useLoaderData();
   const { reviewMassage, serviceTitle, email, _id } = reviewUpdated.data;
   const navigate = useNavigate();
+  useTitle("Update Review");
 
   const handleUpdateReview = (e) => {
     e.preventDefault();

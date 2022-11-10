@@ -2,9 +2,11 @@ import React from "react";
 import logo from "../../asserts/images/logo.png";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const AddService = () => {
   const navigate = useNavigate();
+  useTitle("Add Service");
 
   const handleAddServices = (e) => {
     e.preventDefault();
@@ -43,7 +45,7 @@ const AddService = () => {
   };
 
   return (
-    <div className="hero min-h-screen py-12 lg:px-20 md:px-12 sm:px-8 px-6">
+    <div className="hero min-h-screen lg:py-12 lg:px-20 md:px-12 sm:px-8 px-6">
       <div className="w-full">
         <div className="card  w-full  shadow-2xl bg-base-100">
           <div className="card-body">
@@ -114,7 +116,7 @@ const AddService = () => {
                 />
               </div>
               <div className="form-control mt-10">
-                <button className="btn w-1/4 mx-auto rounded-full text-slate-200 bg-[#ab1818] hover:bg-[#9c1616] hover:border-[#9c1616] border-[#ab1818] px-7 font-medium">
+                <button className="btn lg:w-1/4 mx-auto rounded-full text-slate-200 bg-[#ab1818] hover:bg-[#9c1616] hover:border-[#9c1616] border-[#ab1818] px-7 font-medium">
                   Add Service
                 </button>
               </div>

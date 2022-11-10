@@ -5,11 +5,13 @@ import logo from "../../asserts/images/logo.png";
 import { AiOutlineDoubleRight } from "react-icons/ai";
 import { FaGoogle } from "react-icons/fa";
 import { setAuthToken } from "../../api/Auth";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
   const { logInUser, userSignInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  useTitle("Login");
   const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {

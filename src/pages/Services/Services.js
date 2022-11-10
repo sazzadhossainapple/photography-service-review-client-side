@@ -3,10 +3,12 @@ import ServicesBanner from "../Shared/ServicesBanner/ServicesBanner";
 import TitleLine from "../../asserts/images/titleLine.webp";
 import ServicesItemsCard from "../Shared/ServicesItemsCard/ServicesItemsCard";
 import Spinner from "../Shared/Spinner/Spinner";
+import useTitle from "../../hooks/useTitle";
 
 const Services = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  useTitle("Services");
 
   useEffect(() => {
     fetch("https://flash-photography-point-server.vercel.app/services")

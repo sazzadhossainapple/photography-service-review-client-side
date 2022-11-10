@@ -1,8 +1,11 @@
 import React from "react";
 
 import TitleLine from "../../asserts/images/titleLine.webp";
+import useTitle from "../../hooks/useTitle";
 
 const Blog = () => {
+  useTitle("Blog");
+
   return (
     <div className="lg:px-20 md:px-12 sm:px-8 px-6 lg:py-16 md:py-12 sm:py-8 py-8">
       <div className="flex text-center justify-center flex-col mb-10">
