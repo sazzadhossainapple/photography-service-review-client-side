@@ -7,10 +7,9 @@ import AllUsersReviews from "../AllUserReviews/AllUsersReviews";
 import TileLine from "../../../asserts/images/titleLine.webp";
 
 const ReviewPage = ({ serviceDetails }) => {
+  const [reviewUsers, setReviewUsers] = useState([]);
   const { user } = useContext(AuthContext);
   const { _id, name } = serviceDetails.data;
-
-  const [reviewUsers, setReviewUsers] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -46,7 +45,9 @@ const ReviewPage = ({ serviceDetails }) => {
       },
       body: JSON.stringify(userReviewInfo),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        res.json();
+      })
       .then((data) => {
         if (data.status) {
           toast.success("Your review added successfully.");
@@ -58,25 +59,6 @@ const ReviewPage = ({ serviceDetails }) => {
 
   return (
     <div>
-      <div className="flex text-center justify-center flex-col">
-        <div>
-          <img className="inline-block my-2" src={TileLine} alt="" />
-
-          <h1 className="text-2xl ">All Users Review</h1>
-        </div>
-      </div>
-
-      <div className="my-10">
-        <div>
-          {reviewUsers.map((reviewUser) => (
-            <AllUsersReviews
-              key={reviewUser._id}
-              reviewUser={reviewUser}
-            ></AllUsersReviews>
-          ))}
-        </div>
-      </div>
-
       {user?.email ? (
         <>
           <div>
@@ -114,6 +96,22 @@ const ReviewPage = ({ serviceDetails }) => {
           </p>
         </>
       )}
+      <div className="flex text-center justify-center flex-col my-8">
+        <div>
+          <h1 className="text-2xl mt-2 ">All Users Review</h1>
+          <img className="inline-block my-2" src={TileLine} alt="" />
+        </div>
+      </div>
+      <div className="my-10">
+        <div>
+          {reviewUsers.map((reviewUser) => (
+            <AllUsersReviews
+              key={reviewUser._id}
+              reviewUser={reviewUser}
+            ></AllUsersReviews>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
