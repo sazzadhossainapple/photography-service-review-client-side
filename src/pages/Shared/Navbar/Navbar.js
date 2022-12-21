@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar flex justify-between bg-base-100 shadow-lg py-5 lg:px-20 md:px-12 sm:px-8 px-6">
+    <div className="navbar flex justify-between bg-base-100 shadow-lg py-4 lg:px-20 md:px-12 sm:px-8 px-6">
       <div className="lg:navbar-start ">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -214,34 +214,35 @@ const Navbar = () => {
                 </li>
               </>
             )}
+
+            <div className=" hidden lg:flex ml-3 ">
+              {user?.email ? (
+                <>
+                  <button
+                    onClick={userSignOut}
+                    className="border  px-8 text-base py-3 font-medium border-[#ab1818] rounded-full bg-[#ab1818] hover:bg-[#9c1616] text-white"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span> Logout</span> |
+                      <AiOutlineDoubleRight />
+                    </span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="border  px-8 text-base py-3 font-medium border-[#ab1818] rounded-full bg-[#ab1818] hover:bg-[#9c1616] text-white"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span> Login</span> |
+                      <AiOutlineDoubleRight />
+                    </span>
+                  </Link>
+                </>
+              )}
+            </div>
           </ul>
-        </div>
-        <div className=" hidden lg:flex lg:w-1/3">
-          {user?.email ? (
-            <>
-              <button
-                onClick={userSignOut}
-                className="border  px-8 text-base py-3 font-medium border-[#ab1818] rounded-full bg-[#ab1818] hover:bg-[#9c1616] text-white"
-              >
-                <span className="flex items-center gap-2">
-                  <span> Logout</span> |
-                  <AiOutlineDoubleRight />
-                </span>
-              </button>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className="border  px-8 text-base py-3 font-medium border-[#ab1818] rounded-full bg-[#ab1818] hover:bg-[#9c1616] text-white"
-              >
-                <span className="flex items-center gap-2">
-                  <span> Login</span> |
-                  <AiOutlineDoubleRight />
-                </span>
-              </Link>
-            </>
-          )}
         </div>
       </div>
     </div>
