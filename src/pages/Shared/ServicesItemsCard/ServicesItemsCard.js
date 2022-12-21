@@ -36,12 +36,14 @@ const ServicesItemsCard = ({ service }) => {
           </p>
         </div>
 
-        <Link
-          to={`/service/${_id}`}
-          className="border mb-8   w-full btn  text-base font-medium border-[#ab1818] hover:border-[#ab1818] rounded-full bg-transparent hover:bg-[#9c1616] text-white"
-        >
-          view details
-        </Link>
+        <div className="flex items-end justify-end">
+          <Link
+            to={`/service/${_id}`}
+            className="border mb-8   w-full btn  text-base font-medium border-[#ab1818] hover:border-[#ab1818] rounded-full bg-transparent hover:bg-[#9c1616] text-white"
+          >
+            view details
+          </Link>
+        </div>
       </div>
     </div>
   );
